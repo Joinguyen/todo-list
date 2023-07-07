@@ -1,29 +1,24 @@
 
-import React, {FC} from 'react';
+import { Box } from '@mui/material';
+import { FC } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import {Header} from "./components/Header";
-import {TodoContextProvider} from "./components/TodoContext";
-import {TodoList} from "./components/TodoList";
-import styled, {ThemeProvider} from "styled-components";
+import { Header } from "./components/Header";
+import { TodoContextProvider } from "./components/TodoContext";
+import { TodoList } from "./components/TodoList";
 
-const StyledApp = styled.div`
-&.app {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+const App: FC = () => {
+    return (
+        <TodoContextProvider>
+            <Box className="app">
+                <Box className="app-container">
+                    <Header />
+                    <TodoList />
+                </Box>
+                <ToastContainer />
+            </Box>
+        </TodoContextProvider>
+    );
 }
-`;
-
-export const App: FC = () => {
-  return (
-          <TodoContextProvider>
-              <StyledApp className="app">
-                  <Header/>
-                  <TodoList/>
-              </StyledApp>
-          </TodoContextProvider>
-  );
-}
+export default App;
